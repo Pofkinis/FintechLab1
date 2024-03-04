@@ -1,5 +1,6 @@
 package com.example.fintechlab1;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -19,5 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnBtnclick(View view) {
         this.textView.setText("Hello world!");
+    }
+
+    public void ChangeColor(View view) {
+        this.textView.setTextColor(Color.BLUE);
     }
 }

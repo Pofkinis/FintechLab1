@@ -6,7 +6,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="btn_calculate_caption">Calculate Words</string>
+    <string name="btn_calculate_caption">Calculate</string>
     <string name="words_input_placeholder">Enter your text</string>
     <string name="calculation_type_placeholder">Choose calculation type</string>
 

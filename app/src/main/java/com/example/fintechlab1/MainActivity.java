@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fintechlab1.Services.CalculationService;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,19 +45,31 @@ public class MainActivity extends AppCompatActivity {
         String userInputText = edUserInput.getText().toString();
         String selection = this.typeSelection.getSelectedItem().toString();
 
-        if (TextUtils.isEmpty(userInputText)) {
-            android.widget.Toast.makeText(this, "Please enter some text", android.widget.Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        if(selection.equalsIgnoreCase("Characters")){
-            int count = getCharactersCount(userInputText);
+
+        if (selection.equalsIgnoreCase("Characters")) {
+            int count = CalculationService.getCharactersCount(userInputText);
+
+            if (hasValidationFailed(count)) return;
+
             resultOutput.setText(count + " characters");
         }
 
-        if(selection.equalsIgnoreCase("Words")){
-            int count = getWordsCount(userInputText);
+
+        if (selection.equalsIgnoreCase("Words")) {
+            int count = CalculationService.getWordsCount(userInputText);
+
+            if (hasValidationFailed(count)) return;
+
             resultOutput.setText(count + " words");
         }
+    }
+
+    private boolean hasValidationFailed(int count) {
+        if (count == CalculationService.VALIDATION_FAILED) {
+            android.widget.Toast.makeText(this, "Please enter some text", android.widget.Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
     }
 }
